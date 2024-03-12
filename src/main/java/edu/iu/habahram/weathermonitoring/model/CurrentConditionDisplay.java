@@ -13,6 +13,7 @@ public class CurrentConditionDisplay
 
     public CurrentConditionDisplay(Subject weatherData) {
         this.weatherData = weatherData;
+        this.weatherData.registerObserver(this); // Registers itself as an observer upon creation
     }
 
     @Override

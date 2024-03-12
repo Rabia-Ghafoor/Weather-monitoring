@@ -1,12 +1,13 @@
 package edu.iu.habahram.weathermonitoring.controllers;
 
 import edu.iu.habahram.weathermonitoring.model.CurrentConditionDisplay;
-import edu.iu.habahram.weathermonitoring.model.ForecastDisplay;
-import edu.iu.habahram.weathermonitoring.model.Observer;
-import edu.iu.habahram.weathermonitoring.model.StatisticsDisplay;
+import edu.iu.habahram.weathermonitoring.model.WeatherData;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/displays")
@@ -80,4 +81,17 @@ public class DisplayController {
                 .status(status)
                 .body(html);
     }
+
+
+    @GetMapping("/temperature")
+    public ResponseEntity<Float> getTemperature() {
+        // Retrieve the current temperature from the WeatherData object
+        float temperature = WeatherData.getTemperature();
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(temperature);
+    }
+
+
 }

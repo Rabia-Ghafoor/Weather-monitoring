@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class WeatherData implements Subject{
     private List<Observer> observers;
-    private float temperature;
+    private static float temperature;
     private float humidity;
     private float pressure;
 
@@ -68,4 +68,9 @@ public class WeatherData implements Subject{
         this.pressure = pressure;
         measurementChanged();
     }
+
+    public static float getTemperature() {
+        return temperature;
+    }
+
 }
